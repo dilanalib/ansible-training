@@ -4,7 +4,7 @@
   become: true
   become_method: sudo
   become_user: root
-  remote_user: dilan
+  remote_user: dadmin
 
   tasks:
   - name: check rootfs disk status
@@ -21,7 +21,7 @@
   become: true
   become_method: sudo
   become_user: root
-  remote_user: dilan
+  remote_user: dadmin
 
   tasks:
   - name: rsyslog installation on RedHat
