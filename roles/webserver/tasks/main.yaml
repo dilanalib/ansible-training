@@ -1,7 +1,5 @@
 ---
-# tasks file for skala-sep
 
-#- include_tasks: variables.yml
 - include_tasks: setup-RedHat.yml
   when: ansible_os_family == "RedHat"
 
