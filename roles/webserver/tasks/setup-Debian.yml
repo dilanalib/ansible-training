@@ -1,10 +1,10 @@
 ---
-- name: apache2 webserver kurulumu
+- name: install apache2 webserver
   apt:
     name: apache2
     state: present
 
-- name: apache2 index.html customization
+- name: customize index.html of apache2
   copy:
     src: index.html
     dest: /var/www/html/index.html
@@ -13,7 +13,7 @@
     mode: 0644
   notify: restart_apache2
 
-- name: apache2 deger ekleme
+- name: add value apache2
   copy:
     content: "{{ apache2 }}"
     dest: /var/www/html/index.html
@@ -22,7 +22,7 @@
     mode: 0644
   notify: restart_apache2
 
-- name: apache2 config dosyasını download etme
+- name: download apache2 config file
   fetch:
     src: /var/www/html/index.html
     dest: /tmp/index.html
