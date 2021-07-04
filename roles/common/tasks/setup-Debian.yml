@@ -1,0 +1,19 @@
+---
+
+- name: disk durumuna bak
+  shell: "df -h /"
+  args:
+    executable: "/bin/bash"
+  register: disk 
+
+- name: disk durumunu göster
+  debug:
+    msg: "{{disk.stdout_lines }}"
+
+- name: Ubuntu rsyslog kurma
+  apt:
+    name: rsyslog
+    state: present
+
+- name: rsyslog service restart
+  service: "name=rsyslog state=restarted" 

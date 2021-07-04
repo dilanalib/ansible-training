@@ -1,0 +1,80 @@
+---
+- name: ansible path control
+  stat:
+    path: "{{ file_path }}"
+  register: ap
+
+- debug:
+    msg: "{{ ap }}"
+
+- name: ansible versiyon bilgisi
+  shell: " ansible --version "
+  register: anv
+  when: ap.stat.exists is defined and ap.stat.exists
+
+- debug:
+    msg: "{{ anv.stdout_lines }}"
+  when: ap.stat.exists is defined and ap.stat.exists
+
+#- name: check file_path
+#  stat:
+#    path: "{{ file_path }}"
+#  register: fp
+
+#- name: stat outpunu ekrana basma
+#  debug:
+#    msg: "{{ fp }}"
+
+#- name: apache2 versiyon bilgisi
+#  shell: apache2 -v
+#  register: av
+#  when: fp.stat.executable is defined and fp.stat.executable
+
+#- name: apache2 versiyonu output
+#  debug:
+#    msg: "{{ av.stdout_lines }}"
+#  when: fp.stat.executable is defined and fp.stat.executable
+
+#- name: check volume_path
+#  stat:
+#    path: "{{ volume_path }}"
+#  register: vp
+
+#- name: stat outpunu ekrana basma
+#  debug:
+#    msg: "{{ vp.stdout_lines }}"
+
+#- name: fdisk ile output alma
+#  shell: fdisk -l "{{ volume_path }}"
+#  register: fp
+#  when: vp.stat.isblk is defined and vp.stat.isblk
+
+#- name: fdisk output ekrana basma
+#  debug:
+#    msg: "{{ fp.stdout_lines }}"
+
+#- name: fdisk output alma
+#  shell: fdisk -l "{{ volume_path }}"
+#  register: fp
+#  when: vp.stat.isblk is defined and vp.stat.isblk
+
+#- name: shell output
+#  debug:
+#    msg: "{{ fp.stdout_lines }}"
+#  when: vp.stat.isblk is defined and vp.stat.isblk
+
+#- name: check "{{ file_path }}"
+#  stat:
+#    path: "{{ file_path }}"
+#  register: vp
+#- debug:
+#    msg: "{{ vp }}"
+
+#- name: cat "{{ file_path }}"
+#  shell: cat "{{ file_path }}"
+#  register: fp
+#  when: vp.stat.pw_name is defined and vp.stat.pw_name
+
+#- name: output command
+#  debug: 
+#    msg: "{{ fp.stdout_lines }}" 

@@ -1,0 +1,5 @@
+---
+volume_path: "/dev/sda"
+file_path: "/usr/local/bin/ansible"
+
+

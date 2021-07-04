@@ -1,0 +1,35 @@
+---
+- hosts: all
+  become: true
+  remote_user: dilan
+  roles:
+    - role: common
+  tags: commoncheck
+    
+- hosts: webserver
+  become: true
+  remote_user: dilan
+  roles:
+    - role: webserver 
+  tags: web
+
+- hosts: all
+  become: true
+  remote_user: dilan
+  roles:
+    - role: useradd
+  tags: useradd    
+
+- hosts: stat 
+  become: true
+  remote_user: dilan
+  roles:
+   - role: stat
+  tags: statcheck
+
+- hosts: database 
+  become: true
+  remote_user: dilan
+  roles:
+   - role: database
+  tags: db

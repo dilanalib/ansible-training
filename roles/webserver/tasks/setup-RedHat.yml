@@ -1,0 +1,15 @@
+---
+- name: httpd webserver kurulumu
+  yum:
+    name: httpd
+    state: present
+
+- name: apache2 index.html customization
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart_apache2
+

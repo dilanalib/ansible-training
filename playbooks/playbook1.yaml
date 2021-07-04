@@ -1,0 +1,34 @@
+---
+- name: my playbook1-common
+  hosts: all
+  become: true
+  become_method: sudo
+  become_user: root
+  remote_user: dilan
+
+  tasks:
+  - name: check rootfs disk status
+    shell: "df -h /"
+    args:
+      executable: "/bin/bash"
+    register: disk 
+  - name: output rootfs disk status
+    debug:
+      msg: "{{ disk.stdout_lines }}"
+
+- name: my playbook1-installation rsyslog
+  hosts: all
+  become: true
+  become_method: sudo
+  become_user: root
+  remote_user: dilan
+
+  tasks:
+  - name: rsyslog installation on RedHat
+    shell: yum install rsyslog -y
+    when: ansible_os_family == "RedHat"
+  - name: rsyslog installation on Debian
+    shell: apt-get install rsyslog -y
+    when: ansible_os_family == "Debian" 
+  - name: restart rsyslog service 
+    service: "name=rsyslog state=restarted"  

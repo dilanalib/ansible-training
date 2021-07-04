@@ -1,0 +1,8 @@
+---
+
+- name: add user
+  user: 
+    createhome: true
+    name: "{{ user_name }}"
+    password: "{{ user_password | default('!') | password_hash('sha512') }}"
+    shell: "/bin/bash"

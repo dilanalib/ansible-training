@@ -1,0 +1,5 @@
+---
+
+server_name: "centos8test"
+user_name: "admin"
+user_password: "12345"
