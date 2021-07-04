@@ -1,19 +1,19 @@
 ---
 
-- name: disk durumuna bak
+- name: check disk status
   shell: "df -h /"
   args:
     executable: "/bin/bash"
   register: disk 
 
-- name: disk durumunu göster
+- name: show disk status
   debug:
     msg: "{{disk.stdout_lines }}"
 
-- name: Ubuntu rsyslog kurma
+- name: install rsyslog on Ubuntu
   apt:
     name: rsyslog
     state: present
 
-- name: rsyslog service restart
+- name: restart rsyslog service
   service: "name=rsyslog state=restarted" 
