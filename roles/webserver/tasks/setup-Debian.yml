@@ -4,7 +4,7 @@
     name: apache2
     state: present
 
-- name: customize index.html of apache2
+- name: modify index.html of apache2
   copy:
     src: index.html
     dest: /var/www/html/index.html
